@@ -4,7 +4,7 @@ This is a getting started with Backstage Tutorial.
 
 ## Instructions
 
-Make sure when running in codespaces to open in VS Code desktop or else the communication between the frontend and backend will be broken.
+I couldn't get it to work in codespaces, so working on my own machine.
 
 ### Install the App
 
@@ -12,13 +12,13 @@ Run this command:
 
 ```bash
 nvm use 18 # to pin the version of node
-npx @backstage/create-app
+npx @backstage/create-app@latest
 ```
 
 Output:
 
 ```bash
-npx @backstage/create-app
+npx @backstage/create-app@latest
 Need to install the following packages:
 @backstage/create-app@0.5.4
 Ok to proceed? (y) y
@@ -114,8 +114,6 @@ Creating the app...
   Add authentication: https://backstage.io/docs/auth/
 ```
 
-
-
 ### Launch the App
 
 ```bash
@@ -123,4 +121,4 @@ cd my-backstage-app
 yarn dev
 ```
 
-Now you can open the frontend on port 3000. Go to the ports section and click on the globe icon in codespaces.
+Now you can open the frontend on port http://kicakgistL3000. 
