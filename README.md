@@ -4,6 +4,8 @@ This is a getting started with Backstage Tutorial.
 
 ## Instructions
 
+Make sure when running in codespaces to open in VS Code desktop or else the communication between the frontend and backend will be broken.
+
 ### Install the App
 
 Run this command:
@@ -53,6 +55,8 @@ nvm use 18
 ```bash
 cd backstage
 yarn install
+nvm use 18 # again to make sure we're using node 18
 yarn dev
 ```
 
+Now you can open the frontend on port 3000. Go to the ports section and click on the globe icon in codespaces.
