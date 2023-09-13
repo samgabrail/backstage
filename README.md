@@ -1,6 +1,6 @@
 # Overview
 
-This is a getting started with Backstage Tutorial.
+This is a getting started with Backstage Tutorial. It's part of [this blog post.](https://tekanaid.com/posts/unlocking-developer-bliss-a-first-look-at-backstage-io)
 
 ## Instructions
 
