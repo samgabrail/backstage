@@ -121,4 +121,4 @@ cd my-backstage-app
 yarn dev
 ```
 
-Now you can open the frontend on port http://kicakgistL3000. 
+Now you can open the frontend on port http://localhost:3000. 
