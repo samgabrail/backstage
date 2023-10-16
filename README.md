@@ -118,10 +118,18 @@ Creating the app...
 
 ```bash
 cd my-backstage-app
+./secrets.sh
+```
+
+Or:
+
+```bash
+cd my-backstage-app
 export GITHUB_TOKEN=your-github-token
 export AUTH_GITHUB_CLIENT_ID=your-github-client-id
 export AUTH_GITHUB_CLIENT_SECRET=your-github-client-secret
 yarn dev
 ```
+
 
 Now you can open the frontend on port http://localhost:3000. 

@@ -4,6 +4,7 @@ metadata:
   name: ${{ values.name | dump }}
   annotations:
     github.com/project-slug: samgabrail/aws-eks
+    # github.com/project-slug: samgabrail/${{ values.name }}
   description: ${{ values.name }} running on AWS EKS cluster managed by Terraform
 spec:
   type: service

@@ -33,6 +33,7 @@
     "@backstage/plugin-search-backend-module-pg": "^0.5.9",
     "@backstage/plugin-search-backend-node": "^1.2.4",
     "@backstage/plugin-techdocs-backend": "^1.6.5",
+    "@roadiehq/scaffolder-backend-module-utils": "^1.10.4",
     "app": "link:../app",
     "better-sqlite3": "^8.0.0",
     "dockerode": "^3.3.1",
