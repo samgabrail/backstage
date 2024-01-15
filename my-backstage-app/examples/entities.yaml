@@ -39,3 +39,18 @@ spec:
     message ExampleMessage {
       string example = 1;
     };
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: service-a
+  annotations:
+    backstage.io/kubernetes-id: service-a
+    backstage.io/kubernetes-cluster: docker-desktop
+    backstage.io/techdocs-ref: url:https://github.com/opentofu/opentofu/tree/main/docs
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+  system: examples
+  providesApis: [example-grpc-api]

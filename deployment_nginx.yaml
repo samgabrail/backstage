@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-a
+  namespace: default
+  labels:
+    backstage.io/kubernetes-id: service-a
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: service-a
+  template:
+    metadata:
+      labels:
+        app: service-a
+        backstage.io/kubernetes-id: service-a
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        command: 
+        - /bin/sh
+        args:
+        - -c
+        - "tail -f /dev/null"
+        resources:
+          limits:
+            cpu: 250m
+            memory: 128Mi
+          requests:
+            cpu: 250m
+            memory: 128Mi

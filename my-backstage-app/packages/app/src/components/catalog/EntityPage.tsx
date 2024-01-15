@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Grid } from '@material-ui/core';
+import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 import {
   EntityApiDefinitionCard,
   EntityConsumedApisCard,
@@ -170,6 +171,10 @@ const serviceEntityPage = (
           <EntityDependsOnResourcesCard variant="gridItem" />
         </Grid>
       </Grid>
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/kubernetes" title="Kubernetes">
+      <EntityKubernetesContent refreshIntervalMs={30000} />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/docs" title="Docs">
