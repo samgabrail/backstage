@@ -150,7 +150,13 @@ Also run a test deployment:
 kubectl apply -f deployment_nginx.yaml
 ```
 
+##### Will need to try again with minikube
 
+Install metrics-server in minikube
+
+```bash
+minikube addons enable metrics-server
+```
 
 ### Launch the App
 
