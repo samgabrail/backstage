@@ -114,6 +114,15 @@ Creating the app...
   Add authentication: https://backstage.io/docs/auth/
 ```
 
+## Installing in K8s using Helm
+
+```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add backstage https://backstage.github.io/charts
+kubectl create ns backstage
+helm install backstage backstage/backstage --namespace backstage -f values.yaml
+```
+
 
 ### The Kubernetes Plugin
 
