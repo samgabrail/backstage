@@ -83,23 +83,23 @@ catalog:
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: file
-      target: ../../examples/entities.yaml
+      target: /app/examples/entities.yaml
 
     # Local example template
     - type: file
-      target: ../../examples/template/template.yaml
+      target: /app/examples/template/template.yaml
       rules:
         - allow: [Template]
 
     # Local example organizational data
     - type: file
-      target: ../../examples/org.yaml
+      target: /app/examples/org.yaml
       rules:
         - allow: [User, Group]
 
     # EKS Cluster
     - type: file
-      target: ../../templates/eks-cluster/template.yaml
+      target: /app/templates/eks-cluster/template.yaml
       rules:
         - allow: [Template, User, Group]
 

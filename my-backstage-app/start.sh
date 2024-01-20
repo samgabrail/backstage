@@ -8,4 +8,5 @@ yarn tsc
 # The configuration files here should match the one you use inside the Dockerfile below.
 yarn build:backend --config ../../app-config.production.yaml
 
-docker image build . -f packages/backend/Dockerfile --tag backstage
+docker image build . -f packages/backend/Dockerfile --tag samgabrail/backstage
+docker push samgabrail/backstage

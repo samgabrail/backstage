@@ -90,10 +90,10 @@ backstage:
   image:
 
     # -- Backstage image registry
-    registry: ghcr.io
+    registry: docker.io
 
     # -- Backstage image repository
-    repository: backstage/backstage
+    repository: samgabrail/backstage
 
     # -- Backstage image tag (immutable tags are recommended)
     tag: latest
@@ -114,7 +114,7 @@ backstage:
     backend: 7007
 
   # -- Backstage container command
-  command: ["node", "packages/backend"]
+  command: ["node", "packages/backend", "--config", "app-config.production.yaml"]
 
   # -- Backstage container command arguments
   args: []
@@ -132,7 +132,8 @@ backstage:
   extraEnvVarsCM: []
 
   # -- Backstage container environment variables from existing Secrets
-  extraEnvVarsSecrets: []
+  extraEnvVarsSecrets:
+    - my-backstage-secrets
 
   # -- Backstage container additional volume mounts
   extraVolumeMounts: []

@@ -116,13 +116,28 @@ Creating the app...
 
 ## Installing in K8s using Helm
 
+### Build the Docker container
+
+```bash
+./start.sh
+```
+
+### Instll in Kubernetes
+
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo add backstage https://backstage.github.io/charts
 kubectl create ns backstage
+./create_k8s_secrets_for_backstage.sh
+kubectl apply -f my-backstage-secrets.yaml
 helm install backstage backstage/backstage --namespace backstage -f values.yaml
 ```
 
+Upgrading Helm:
+
+```bash
+helm upgrade backstage backstage/backstage --namespace backstage -f values.yaml
+```
 
 ### The Kubernetes Plugin
 
