@@ -16,7 +16,7 @@ rancher:
     interfaces:
       eth0:
         address: 192.168.1.81/32
-        netmask: 255.255.255.255
+        netmask: 255.255.255.0
         gateway: 192.168.1.1
         mtu: 1400
         dhcp: false
