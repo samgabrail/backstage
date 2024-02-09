@@ -119,6 +119,7 @@ Creating the app...
 ### Build the Docker container
 
 ```bash
+cd my-backstage-app
 ./start.sh
 ```
 
