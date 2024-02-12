@@ -61,19 +61,19 @@ ingress:
   className: "traefik"
 
   # -- Additional annotations for the Ingress resource
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  # annotations:
+  #   cert-manager.io/cluster-issuer: "letsencrypt-prod"
 
   # -- Hostname to be used to expose the route to access the backstage application (e.g: backstage.IP.nip.io)
   host: "backstage.tekanaid.com"
 
   # -- Ingress TLS parameters
-  tls:
-    # -- Enable TLS configuration for the host defined at `ingress.host` parameter
-    enabled: true
+  # tls:
+  #   # -- Enable TLS configuration for the host defined at `ingress.host` parameter
+  #   enabled: true
 
-    # -- The name to which the TLS Secret will be called
-    secretName: "backstage.tekanaid-tls"
+  #   # -- The name to which the TLS Secret will be called
+  #   secretName: "backstage.tekanaid-tls"
 
 
 # -- Backstage parameters

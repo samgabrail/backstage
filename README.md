@@ -123,7 +123,7 @@ cd my-backstage-app
 ./start.sh
 ```
 
-### Instll in Kubernetes
+### Install in Kubernetes
 
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
