@@ -53,19 +53,19 @@ diagnosticMode:
     - infinity
 
 # -- Ingress parameters
-ingress:
-  # -- Enable the creation of the ingress resource
-  enabled: true
+# ingress:
+#   # -- Enable the creation of the ingress resource
+#   enabled: true
 
-  # -- Name of the IngressClass cluster resource which defines which controller will implement the resource (e.g nginx)
-  className: "traefik"
+#   # -- Name of the IngressClass cluster resource which defines which controller will implement the resource (e.g nginx)
+#   className: "traefik"
 
   # -- Additional annotations for the Ingress resource
   # annotations:
   #   cert-manager.io/cluster-issuer: "letsencrypt-prod"
 
-  # -- Hostname to be used to expose the route to access the backstage application (e.g: backstage.IP.nip.io)
-  host: "backstage.tekanaid.com"
+  # # -- Hostname to be used to expose the route to access the backstage application (e.g: backstage.IP.nip.io)
+  # host: "backstage.tekanaid.com"
 
   # -- Ingress TLS parameters
   # tls:
