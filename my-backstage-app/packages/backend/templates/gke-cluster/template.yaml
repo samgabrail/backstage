@@ -9,23 +9,12 @@ spec:
   type: service
 
   parameters:
-    - title: Fill in some steps
-      required:
-        - name
-      properties:
-        name:
-          title: App Name
-          type: string
-          description: Unique name for your app
-          ui:autofocus: true
-          ui:options:
-            rows: 5
     - title: Choose a Repo location
       required:
         - repoUrl
       properties:
         repoUrl:
-          title: Repository Location
+          title: Repository Location for ArgoCD to Deploy
           type: string
           ui:field: RepoUrlPicker
           ui:options:
@@ -81,14 +70,17 @@ spec:
       input:
         url: ./content
         values:
-          name: ${{ parameters.name }}
+          clusterName: ${{ parameters.clusterName }}
+          region: ${{ parameters.region }}
+          machineType: ${{ parameters.machineType }}
+          nodeCount: ${{ parameters.nodeCount | string}}
     # This step publishes the contents of the working directory to GitHub.
     - id: publish
       name: Publish
       action: publish:github
       input:
         allowedHosts: ['github.com']
-        description: This is ${{ parameters.name }}
+        description: This is ${{ parameters.clusterName }}
         repoUrl: ${{ parameters.repoUrl }}
     # Start a GitHub Action to build an GKE cluster with Terraform
     - id: github-action
@@ -103,7 +95,7 @@ spec:
           region: ${{ parameters.region }}
           machineType: ${{ parameters.machineType }}
           nodeCount: ${{ parameters.nodeCount | string}}
-          repoURL: ${{ steps['publish'].output.remoteUrl }}
+          repoURLforArgo: ${{ steps['publish'].output.remoteUrl }}
           action: ${{ parameters.action }}
 
   output:
