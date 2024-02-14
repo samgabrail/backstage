@@ -1,0 +1,12 @@
+apiVersion: compositions.io/v1alpha1
+kind: XCluster
+metadata:
+  name: ${{ values.clusterName }}
+spec:
+  parameters:
+    clusterName: ${{ values.clusterName }}
+    region: ${{ values.region }}
+    machineType: ${{ values.machineType }}
+    nodeCount: ${{ values.nodeCount }}
+  compositionRef:
+    name: gke-cluster-nodepool
