@@ -58,13 +58,13 @@ spec:
       name: Trigger GitHub Action
       action: github:actions:dispatch
       input:
-        workflowId: manage-gke-cluster.yml
+        workflowId: deploy_with_argocd.yaml
         repoUrl: 'github.com?repo=crossplane-gke&owner=samgabrail'
         branchOrTagName: 'main'
         workflowInputs:
           clusterName: ${{ parameters.clusterName }}
           region: ${{ parameters.region }}
           machineType: ${{ parameters.machineType }}
-          nodeCount: ${{ parameters.nodeCount }}
+          nodeCount: ${{ parameters.nodeCount | string}}
           action: ${{ parameters.action }}
 
