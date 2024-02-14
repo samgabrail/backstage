@@ -360,7 +360,7 @@ postgresql:
     password: ""
 
     # -- Name of existing secret to use for PostgreSQL credentials
-    existingSecret: ""
+    existingSecret: "my-backstage-secrets"
 
     # -- The secret keys Postgres will look for to retrieve the relevant password
     secretKeys:

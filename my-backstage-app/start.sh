@@ -9,4 +9,6 @@ yarn tsc
 yarn build:backend --config ../../app-config.production.yaml
 
 docker image build . -f packages/backend/Dockerfile --tag samgabrail/backstage
+docker tag samgabrail/backstage samgabrail/backstage:$1
 docker push samgabrail/backstage
+docker push samgabrail/backstage:$1

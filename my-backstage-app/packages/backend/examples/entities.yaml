@@ -46,7 +46,7 @@ metadata:
   name: service-a
   annotations:
     backstage.io/kubernetes-id: service-a
-    backstage.io/kubernetes-cluster: docker-desktop
+    backstage.io/kubernetes-cluster: baremetal-k3s
     backstage.io/techdocs-ref: url:https://github.com/opentofu/opentofu/tree/main/docs
 spec:
   type: service
@@ -54,3 +54,16 @@ spec:
   owner: guests
   system: examples
   providesApis: [example-grpc-api]
+# ---
+# apiVersion: backstage.io/v1alpha1
+# kind: Resource
+# metadata:
+#   name: vmware-k3s
+#   annotations:
+#     kubernetes.io/api-server: 'https://masterk8s.tekanaid.com:6443'
+#     kubernetes.io/api-server-certificate-authority: # base64-encoded CA
+#     kubernetes.io/auth-provider: 'serviceAccount'
+#     kubernetes.io/skip-metrics-lookup: 'true'
+# spec:
+#   type: kubernetes-cluster
+#   owner: user:guest

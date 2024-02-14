@@ -131,3 +131,4 @@ dist
 *secrets*
 test/delete_github_repos.go
 !create_k8s_secrets_for_backstage.sh
+*google-creds.json

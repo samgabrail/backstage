@@ -119,8 +119,8 @@ kubernetes:
   clusterLocatorMethods:
     - type: 'config'
       clusters:
-        - url: https://127.0.0.1:6443
-          name: docker-desktop
+        - url: https://192.168.1.81:6443
+          name: baremetal-k3s
           authProvider: 'serviceAccount'
           skipTLSVerify: false
           skipMetricsLookup: false
@@ -129,3 +129,14 @@ kubernetes:
           # dashboardApp: standard
           caData: ${K8S_CONFIG_CA_DATA}
           # caFile: '' # local path to CA file
+    - type: 'gke'
+      projectId: 'crossplaneprojects'
+      region: 'us-east1' # optional
+      authProvider: 'google' # optional
+      skipTLSVerify: false # optional
+      skipMetricsLookup: false # optional
+      exposeDashboard: false # optional
+      # matchingResourceLabels: # optional
+      #   - key: 'environment'
+      #     value: 'production'
+    - type: 'catalog'

@@ -120,7 +120,7 @@ Creating the app...
 
 ```bash
 cd my-backstage-app
-./start.sh
+./start.sh 1.0.1
 ```
 
 ### Install in Kubernetes
@@ -137,7 +137,7 @@ helm install backstage backstage/backstage --namespace backstage -f values.yaml
 Upgrading Helm:
 
 ```bash
-helm upgrade backstage backstage/backstage --namespace backstage -f values.yaml
+helm upgrade backstage backstage/backstage --namespace backstage -f values.yaml --set backstage.image.tag=1.0.1
 ```
 
 ### The Kubernetes Plugin
