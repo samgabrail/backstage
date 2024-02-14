@@ -1,0 +1,77 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: gke-cluster
+  title: New GKE Cluster
+  description: Deploy a New GKE Cluster using Crossplane
+spec:
+  owner: user:guest
+  type: service
+
+  parameters:
+    - title: Basic GKE Cluster Configuration
+      required:
+        - clusterName
+        - region
+        - action
+        - machineType
+        - nodeCount
+      properties:
+        clusterName:
+          title: Cluster Name
+          type: string
+          description: The name of your GKE cluster
+          ui:autofocus: true
+        region:
+          title: Region
+          type: string
+          description: The region where the cluster will be deployed
+          enum:
+            - us-east1
+            - us-central1
+        machineType:
+          title: Machine Type
+          type: string
+          description: The type of machine to deploy the cluster nodes
+          enum:
+            - e2-small
+            - e2-medium
+        nodeCount:
+          title: Node Count
+          type: number
+          description: The number of nodes per AZ
+          enum:
+            - 1
+            - 2
+            - 3
+        action:
+          title: Action
+          type: string
+          description: Action to perform (create/destroy)
+          enum:
+            - create
+            - destroy
+
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./content
+        values:
+          name: ${{ parameters.name }}
+    # Start a GitHub Action to build an GKE cluster with Terraform
+    - id: github-action
+      name: Trigger GitHub Action
+      action: github:actions:dispatch
+      input:
+        workflowId: manage-gke-cluster.yml
+        repoUrl: 'github.com?repo=aws-gke&owner=samgabrail'
+        branchOrTagName: 'main'
+        workflowInputs:
+          clusterName: ${{ parameters.clusterName }}
+          region: ${{ parameters.region }}
+          machineType: ${{ parameters.machineType }}
+          nodeCount: ${{ parameters.nodeCount }}
+          action: ${{ parameters.action }}
+

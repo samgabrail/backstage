@@ -130,7 +130,6 @@ kubernetes:
           # caFile: '' # local path to CA file
     - type: 'gke'
       projectId: 'crossplaneprojects'
-      region: 'us-east1' # optional
       authProvider: 'google' # optional
       skipTLSVerify: false # optional
       skipMetricsLookup: false # optional
