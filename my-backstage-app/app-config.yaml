@@ -102,6 +102,12 @@ catalog:
       rules:
         - allow: [Template, User, Group]
 
+    # GKE Cluster
+    - type: file
+      target: ./templates/gke-cluster/template.yaml
+      rules:
+        - allow: [Template, User, Group]
+
     ## Uncomment these lines to add more example data
     # - type: url
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml

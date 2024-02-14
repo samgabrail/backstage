@@ -53,20 +53,13 @@ spec:
             - destroy
 
   steps:
-    - id: fetch-base
-      name: Fetch Base
-      action: fetch:template
-      input:
-        url: ./content
-        values:
-          name: ${{ parameters.name }}
     # Start a GitHub Action to build an GKE cluster with Terraform
     - id: github-action
       name: Trigger GitHub Action
       action: github:actions:dispatch
       input:
         workflowId: manage-gke-cluster.yml
-        repoUrl: 'github.com?repo=aws-gke&owner=samgabrail'
+        repoUrl: 'github.com?repo=crossplane-gke&owner=samgabrail'
         branchOrTagName: 'main'
         workflowInputs:
           clusterName: ${{ parameters.clusterName }}
