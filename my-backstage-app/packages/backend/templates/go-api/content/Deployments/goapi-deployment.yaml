@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: ${{values.apiName}}
-        image: ghcr.io/samgabrail/${{ values.imageName }}:latest
+        image: samgabrail/${{ values.imageName }}:latest
         ports:
         - containerPort: 8080
 ---
