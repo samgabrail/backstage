@@ -1,0 +1,89 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: go-api
+  title: New Go API
+  description: Deploy a New Go API
+spec:
+  owner: user:guest
+  type: service
+
+  parameters:
+    - title: Choose a Repo location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location for your new Go API to Deploy
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+    - title: Basic GKE Cluster Configuration
+      required:
+        - apiName
+        - imageName
+        - action
+      properties:
+        apiName:
+          title: API Name
+          type: string
+          description: The name of the API
+          ui:autofocus: true
+        imageName:
+          title: Container Image Name
+          type: string
+          description: The name of your GKE cluster
+        action:
+          title: Action
+          type: string
+          description: Action to perform (create/destroy)
+          enum:
+            - create
+            - destroy
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./content
+        values:
+          imageName: ${{ parameters.imageName }}
+          apiName: ${{ parameters.apiName }}
+    # This step publishes the contents of the working directory to GitHub.
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: This is ${{ parameters.imageName }}
+        repoUrl: ${{ parameters.repoUrl }}
+    # Start a GitHub Action to build an GKE cluster with Terraform
+    - id: github-action
+      name: Trigger GitHub Action
+      action: github:actions:dispatch
+      input:
+        workflowId: go_api.yaml
+        repoUrl: 'github.com?repo=crossplane-gke&owner=samgabrail'
+        branchOrTagName: 'main'
+        workflowInputs:
+          imageName: ${{ parameters.imageName }}
+          apiName: ${{ parameters.apiName }}
+          repoURLforArgo: ${{ steps['publish'].output.remoteUrl }}
+          action: ${{ parameters.action }}
+    # The final step is to register our new component in the catalog.
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps['publish'].output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}

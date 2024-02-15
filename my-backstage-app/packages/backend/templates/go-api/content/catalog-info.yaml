@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.apiName | dump }}
+  annotations:
+    github.com/project-slug: samgabrail/${{ values.apiName }}
+  description: ${{ values.apiName }} running on Kubernetes
+spec:
+  type: service
+  owner: user:guest
+  lifecycle: experimental
