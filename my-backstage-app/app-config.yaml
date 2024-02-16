@@ -50,7 +50,14 @@ integrations:
   #   '/test':
   #     target: 'https://example.com'
   #     changeOrigin: true
-
+proxy:
+  '/argocd/api':
+    target: https://argocd.tekanaid.com/api/v1/
+    changeOrigin: true
+    secure: true
+    headers:
+      Cookie:
+        $env: ARGOCD_AUTH_TOKEN
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
 # and an external cloud storage when deploying TechDocs for production use-case.
@@ -107,7 +114,7 @@ catalog:
       target: ./templates/gke-cluster/template.yaml
       rules:
         - allow: [Template, User, Group]
-        
+
     # Go API
     - type: file
       target: ./templates/go-api/template.yaml

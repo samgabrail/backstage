@@ -5,6 +5,7 @@ metadata:
   annotations:
     github.com/project-slug: samgabrail/${{ values.apiName }}
     backstage.io/kubernetes-id: ${{ values.apiName }}
+    argocd/app-name: ${{ values.apiName }}
   description: ${{ values.apiName }} running on Kubernetes
 spec:
   type: service

@@ -175,13 +175,9 @@ Also run a test deployment:
 kubectl apply -f deployment_nginx.yaml
 ```
 
-##### Will need to try again with minikube
+### ArgoCD Plugin
 
-Install metrics-server in minikube
-
-```bash
-minikube addons enable metrics-server
-```
+[Follow these instructions.](https://roadie.io/backstage/plugins/argo-cd/)
 
 ### Launch the App
 
