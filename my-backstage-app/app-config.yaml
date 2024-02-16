@@ -56,8 +56,8 @@ proxy:
     changeOrigin: true
     secure: true
     headers:
-      Cookie:
-        $env: ARGOCD_AUTH_TOKEN
+      Authorization: Bearer ${ARGOCD_AUTH_TOKEN}
+
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
 # and an external cloud storage when deploying TechDocs for production use-case.
@@ -76,6 +76,10 @@ auth:
       development:
         clientId: ${AUTH_GITHUB_CLIENT_ID}
         clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
+    google:
+      development:
+        clientId: ${AUTH_GOOGLE_CLIENT_ID}
+        clientSecret: ${AUTH_GOOGLE_CLIENT_SECRET}
 
 # scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
@@ -149,7 +153,7 @@ kubernetes:
     - type: 'gke'
       projectId: 'crossplaneprojects'
       authProvider: 'google' # optional
-      skipTLSVerify: false # optional
+      skipTLSVerify: true # optional
       skipMetricsLookup: false # optional
       exposeDashboard: false # optional
       # matchingResourceLabels: # optional
