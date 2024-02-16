@@ -1,0 +1,43 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: app-destroy
+  title: Destroy an App with Repo
+  description: Destroy an App with Repo
+spec:
+  owner: user:guest
+  type: service
+
+  parameters:
+    - title: Choose a Repo location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location to Destroy
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+    - title: Basic GKE Cluster Configuration
+      required:
+        - apiName
+      properties:
+        apiName:
+          title: API Name
+          type: string
+          description: The name of the API
+          ui:autofocus: true
+
+  steps:
+    - id: github-action
+      name: Trigger GitHub Action to Destroy
+      action: github:actions:dispatch
+      input:
+        workflowId: app_destroy.yaml
+        repoUrl: 'github.com?repo=crossplane-gke&owner=samgabrail'
+        branchOrTagName: 'main'
+        workflowInputs:
+          apiName: ${{ parameters.apiName }}
+          repoURLforArgo: ${{ parameters.repoUrl }}

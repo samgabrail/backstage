@@ -119,6 +119,18 @@ catalog:
       rules:
         - allow: [Template, User, Group]
 
+    # Go API
+    - type: file
+      target: ./templates/go-api/template.yaml
+      rules:
+        - allow: [Template, User, Group]
+
+    # Go API Destroy
+    - type: file
+      target: ./templates/go-api/template_destroy.yaml
+      rules:
+        - allow: [Template, User, Group]
+        
     ## Uncomment these lines to add more example data
     # - type: url
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml

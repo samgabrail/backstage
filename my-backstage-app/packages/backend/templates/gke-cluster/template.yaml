@@ -24,7 +24,6 @@ spec:
       required:
         - clusterName
         - region
-        - action
         - machineType
         - nodeCount
       properties:
@@ -55,13 +54,6 @@ spec:
             - 1
             - 2
             - 3
-        action:
-          title: Action
-          type: string
-          description: Action to perform (create/destroy)
-          enum:
-            - create
-            - destroy
 
   steps:
     - id: fetch-base
@@ -96,7 +88,6 @@ spec:
           machineType: ${{ parameters.machineType }}
           nodeCount: ${{ parameters.nodeCount | string}}
           repoURLforArgo: ${{ steps['publish'].output.remoteUrl }}
-          action: ${{ parameters.action }}
 
   output:
     links:

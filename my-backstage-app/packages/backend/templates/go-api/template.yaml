@@ -24,7 +24,6 @@ spec:
       required:
         - apiName
         - imageName
-        - action
       properties:
         apiName:
           title: API Name
@@ -35,13 +34,7 @@ spec:
           title: Container Image Name
           type: string
           description: The name of your GKE cluster
-        action:
-          title: Action
-          type: string
-          description: Action to perform (create/destroy)
-          enum:
-            - create
-            - destroy
+
   steps:
     - id: fetch-base
       name: Fetch Base
@@ -71,7 +64,6 @@ spec:
           imageName: ${{ parameters.imageName }}
           apiName: ${{ parameters.apiName }}
           repoURLforArgo: ${{ steps['publish'].output.remoteUrl }}
-          action: ${{ parameters.action }}
     # The final step is to register our new component in the catalog.
     - id: register
       name: Register
