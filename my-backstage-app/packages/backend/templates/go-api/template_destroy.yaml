@@ -20,7 +20,7 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-    - title: Basic GKE Cluster Configuration
+    - title: Basic API Configuration
       required:
         - apiName
       properties:

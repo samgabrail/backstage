@@ -119,11 +119,11 @@ catalog:
       rules:
         - allow: [Template, User, Group]
 
-    # Go API
-    - type: url
-      target: https://github.com/samgabrail/backstage/blob/main/my-backstage-app/packages/backend/templates/go-api/template.yaml
-      rules:
-        - allow: [Template, User, Group]
+    # Go API need to register this template as an existing component and point to the url in github because then it can be dynamic and we can change the k8s url for argocd to deploy in our GKE cluster
+    # - type: url
+    #   target: https://github.com/samgabrail/backstage/blob/main/my-backstage-app/packages/backend/templates/go-api/template.yaml
+    #   rules:
+    #     - allow: [Template, User, Group]
 
     # Go API Destroy
     - type: url
