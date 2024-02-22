@@ -1,0 +1,44 @@
+name: Build and Deploy Backstage App
+
+on:
+  push:
+    tags:
+      - 'v*' # Trigger the workflow on push events to tags like v1.0.2
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    container: 
+      image: node:18.17.1 # Use a Node.js container
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies and Build
+        run: |
+          yarn install --frozen-lockfile
+          yarn tsc
+          yarn build:backend --config ../../app-config.production.yaml
+        working-directory: my-backstage-app
+
+      - name: Build and Push Docker Image
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          TAG=${GITHUB_REF#refs/tags/}
+          docker image build . -f packages/backend/Dockerfile --tag samgabrail/backstage:$TAG
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+          docker push samgabrail/backstage:$TAG
+        working-directory: my-backstage-app
+        
+      - name: Deploy to Kubernetes
+        env:
+          KUBECONFIG_BASE64: ${{ secrets.KUBECONFIG }}
+        run: |
+          echo "$KUBECONFIG_BASE64" | base64 -d > ./kubeconfig
+          export KUBECONFIG=$(pwd)/kubeconfig
+          TAG=${GITHUB_REF#refs/tags/}
+          helm upgrade backstage backstage/backstage --namespace backstage -f values.yaml --set backstage.image.tag=$TAG
+        working-directory: my-backstage-app
