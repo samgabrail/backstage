@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18'
-          
+
       - name: Install Helm
         run: |
           curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
@@ -47,7 +47,10 @@ jobs:
           KUBECONFIG_BASE64: ${{ secrets.KUBECONFIG }}
         run: |
           echo "$KUBECONFIG_BASE64" | base64 -d > ./kubeconfig
+          chmod 600 kubeconfig
           export KUBECONFIG=$(pwd)/kubeconfig
           TAG=${GITHUB_REF#refs/tags/}
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add backstage https://backstage.github.io/charts
           helm upgrade backstage backstage/backstage --namespace backstage -f values.yaml --set backstage.image.tag=$TAG
         working-directory: my-backstage-app
