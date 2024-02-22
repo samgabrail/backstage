@@ -114,20 +114,20 @@ catalog:
         - allow: [Template, User, Group]
 
     # GKE Cluster
-    - type: file
-      target: ./templates/gke-cluster/template.yaml
+    - type: url
+      target: https://github.com/samgabrail/backstage/blob/main/my-backstage-app/packages/backend/templates/gke-cluster/template.yaml
       rules:
         - allow: [Template, User, Group]
 
     # Go API
-    - type: file
-      target: ./templates/go-api/template.yaml
+    - type: url
+      target: https://github.com/samgabrail/backstage/blob/main/my-backstage-app/packages/backend/templates/go-api/template.yaml
       rules:
         - allow: [Template, User, Group]
 
     # Go API Destroy
-    - type: file
-      target: ./templates/go-api/template_destroy.yaml
+    - type: url
+      target: https://github.com/samgabrail/backstage/blob/main/my-backstage-app/packages/backend/templates/go-api/template_destroy.yaml
       rules:
         - allow: [Template, User, Group]
         

@@ -131,13 +131,7 @@ helm repo add backstage https://backstage.github.io/charts
 kubectl create ns backstage
 ./create_k8s_secrets_for_backstage.sh
 kubectl apply -f my-backstage-secrets.yaml
-helm install backstage backstage/backstage --namespace backstage -f values.yaml
-```
-
-Upgrading Helm:
-
-```bash
-helm upgrade backstage backstage/backstage --namespace backstage -f values.yaml --set backstage.image.tag=1.0.2
+helm upgrade --install backstage backstage/backstage --namespace backstage -f values.yaml --set backstage.image.tag=v1.0.5
 ```
 
 ### The Kubernetes Plugin
@@ -179,7 +173,29 @@ kubectl apply -f deployment_nginx.yaml
 
 [Follow these instructions.](https://roadie.io/backstage/plugins/argo-cd/)
 
-### Launch the App
+#### Add a K8s cluster to Argo
+
+For GKE, first connect to the cluster:
+```bash
+gcloud container clusters get-credentials samgke-p4mhk --region us-central1 --project crossplaneprojects
+```
+
+Then use the Argo CLI to add the cluster:
+```bash
+argocd cluster add your-gke-cluster-context --name your-gke-cluster-for-argocd
+```
+
+Example:
+```bash
+argocd cluster add gke_crossplaneprojects_us-central1_samgke-p4mhk --name gke-dev
+```
+
+If you need to generate an API token by running the command or login with the cli using `argocd login argocd.tekanaid.com` and then run the command:
+```bash
+argocd account generate-token
+```
+
+### Launch the App Locally
 
 ```bash
 cd my-backstage-app

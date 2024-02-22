@@ -20,7 +20,7 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-    - title: Basic GKE Cluster Configuration
+    - title: Basic API Configuration
       required:
         - apiName
         - imageName
@@ -33,7 +33,7 @@ spec:
         imageName:
           title: Container Image Name
           type: string
-          description: The name of your GKE cluster
+          description: The name of your container image
 
   steps:
     - id: fetch-base
@@ -52,7 +52,7 @@ spec:
         allowedHosts: ['github.com']
         description: This is ${{ parameters.imageName }}
         repoUrl: ${{ parameters.repoUrl }}
-    # Start a GitHub Action to build an GKE cluster with Terraform
+    # Start a GitHub Action to build our API
     - id: github-action
       name: Trigger GitHub Action
       action: github:actions:dispatch
@@ -64,6 +64,7 @@ spec:
           imageName: ${{ parameters.imageName }}
           apiName: ${{ parameters.apiName }}
           repoURLforArgo: ${{ steps['publish'].output.remoteUrl }}
+          k8sClusterURLforArgo: https://34.42.123.185 # you will need to update this depending on what cluster you want your developers to deploy apps to
     # The final step is to register our new component in the catalog.
     - id: register
       name: Register
