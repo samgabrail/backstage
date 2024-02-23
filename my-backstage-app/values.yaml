@@ -126,8 +126,10 @@ backstage:
   extraContainers: []
 
   # -- Backstage container environment variables
-  extraEnvVars: []
-
+  extraEnvVars: 
+    - name: GOOGLE_APPLICATION_CREDENTIALS
+      value: "/etc/secrets/google-creds.json"
+    
   # -- Backstage container environment variables from existing ConfigMaps
   extraEnvVarsCM: []
 
@@ -136,10 +138,16 @@ backstage:
     - my-backstage-secrets
 
   # -- Backstage container additional volume mounts
-  extraVolumeMounts: []
+  extraVolumeMounts:
+    - name: google-creds-volume
+      mountPath: "/etc/secrets"
+      readOnly: true
 
   # -- Backstage container additional volumes
-  extraVolumes: []
+  extraVolumes:
+    - name: google-creds-volume
+      secret:
+        secretName: google-creds
 
   # -- Backstage container init containers
   initContainers: []

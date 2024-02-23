@@ -130,6 +130,9 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo add backstage https://backstage.github.io/charts
 kubectl create ns backstage
 ./create_k8s_secrets_for_backstage.sh
+kubectl create secret generic google-creds \
+  --from-file=google-creds.json=./packages/backend/google-creds.json \
+  --namespace backstage
 kubectl apply -f my-backstage-secrets.yaml
 helm upgrade --install backstage backstage/backstage --namespace backstage -f values.yaml --set backstage.image.tag=v1.0.5
 ```

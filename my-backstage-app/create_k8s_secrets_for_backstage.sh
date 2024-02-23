@@ -3,6 +3,7 @@
 # Define the input file with secret variables and the output file
 INPUT_FILE="secrets.sh"  # Replace with the path to your file with secrets
 OUTPUT_FILE="my-backstage-secrets.yaml"
+GOOGLE_CREDS_FILE="google-creds.json"  # Path to your Google credentials file
 
 # Start writing the Secret manifest
 echo "apiVersion: v1" > $OUTPUT_FILE
@@ -17,6 +18,11 @@ while IFS='=' read -r key value
 do
   # Trim leading 'export ' from the key if present
   key=${key#export }
+
+  # Skip GOOGLE_APPLICATION_CREDENTIALS line
+  if [[ $key == "GOOGLE_APPLICATION_CREDENTIALS" ]]; then
+    continue
+  fi
 
   # Stop processing if the line contains 'yarn dev'
   if [[ $key == *"yarn dev"* ]]; then
