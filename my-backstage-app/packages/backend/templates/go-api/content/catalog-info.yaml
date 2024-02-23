@@ -2,6 +2,10 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: ${{ values.apiName | dump }}
+  links:
+    - url: https://masterk8sbaremetal.tekanaid.com:<NODE_PORT>
+      title: App
+      icon: dashboard
   annotations:
     github.com/project-slug: samgabrail/${{ values.apiName }}
     backstage.io/kubernetes-id: ${{ values.apiName }}
