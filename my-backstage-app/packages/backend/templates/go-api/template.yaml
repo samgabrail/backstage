@@ -64,7 +64,7 @@ spec:
           imageName: ${{ parameters.imageName }}
           apiName: ${{ parameters.apiName }}
           repoURLforArgo: ${{ steps['publish'].output.remoteUrl }}
-          k8sClusterURLforArgo: https://kubernetes.default.svc # you will need to update this depending on what cluster you want your developers to deploy apps to
+          k8sClusterURLforArgo: https://34.30.205.164 # you will need to update this depending on what cluster you want your developers to deploy apps to
     # The final step is to register our new component in the catalog.
     - id: register
       name: Register
