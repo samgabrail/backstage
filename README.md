@@ -241,7 +241,14 @@ argocd cluster add gke_crossplaneprojects_us-central1_samgke-26nkx --name gke-de
 
 #### Persona: Developer
 7. Launch the Go API template from Backstage
-8. Check the ArgoCD Overview Widget in Backstage
-9. Check the Kubernetes Tab in Backstage
-10. Now the d
+8. Click on the new component to show that we're still waiting for it to be created
+9. Open the GitHub page and clone it locally
+10. Check the ArgoCD Overview Widget in Backstage to see all is green
+11. Click on the Name of the app in the widget for more info and see the destination K8s API server
+12. Click on the App in Links to see it running
+13. Check the Kubernetes Tab in Backstage
+14. Make a change in the cloned repo and push it to GitHub to watch ArgoCD sync and deploy the changes
+
 -- This marks the end of the Developer's job
+
+15. Show ArgoCD UI with the new API app

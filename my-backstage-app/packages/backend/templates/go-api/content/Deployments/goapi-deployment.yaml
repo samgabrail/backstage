@@ -29,11 +29,10 @@ metadata:
   labels:
     backstage.io/kubernetes-id: ${{values.apiName}}
 spec:
-  type: NodePort
+  type: LoadBalancer  
   selector:
     app: ${{values.apiName}}
   ports:
     - protocol: TCP
-      port: 8080
+      port: 80
       targetPort: 8080
-      nodePort: 30000
