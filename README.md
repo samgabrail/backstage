@@ -229,8 +229,8 @@ Now you can open the frontend on port http://localhost:3000.
 2. Show the flow from Backstage to the Repo to GitHub Actions to ArgoCD to GCP then wait for the cluster to come up
 3. Register the GKE Cluster in ArgoCD Manually using the name of the cluster from GCP
 ```bash
-gcloud container clusters get-credentials samgke-26nkx --region us-central1 --project crossplaneprojects
-argocd cluster add gke_crossplaneprojects_us-central1_samgke-26nkx --name gke-dev
+gcloud container clusters get-credentials samgke-jrlzj --region us-central1 --project crossplaneprojects
+argocd cluster add gke_crossplaneprojects_us-central1_samgke-jrlzj --name gke-dev
 ```
 4. Check the ArgoCD UI to see the cluster registered and get the URL for the new cluster
 5. Update the Go API template with the URL of the new GKE cluster in GitHub
@@ -251,4 +251,4 @@ argocd cluster add gke_crossplaneprojects_us-central1_samgke-26nkx --name gke-de
 
 -- This marks the end of the Developer's job
 
-15. Show ArgoCD UI with the new API app
+15. Show ArgoCD UI with the new API
