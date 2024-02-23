@@ -218,3 +218,30 @@ yarn dev
 ```
 
 Now you can open the frontend on port http://localhost:3000. 
+
+
+## Demo Steps
+
+### Full Workflow Demo
+
+#### Persona: Platform Engineer
+1. Use Backstage's template `New GKE Cluster` to create a new cluster
+2. Show the flow from Backstage to the Repo to GitHub Actions to ArgoCD to GCP then wait for the cluster to come up
+3. Register the GKE Cluster in ArgoCD Manually using the name of the cluster from GCP
+```bash
+gcloud container clusters get-credentials samgke-26nkx --region us-central1 --project crossplaneprojects
+argocd cluster add gke_crossplaneprojects_us-central1_samgke-26nkx --name gke-dev
+```
+4. Check the ArgoCD UI to see the cluster registered and get the URL for the new cluster
+5. Update the Go API template with the URL of the new GKE cluster in GitHub
+6. Register this Go API template as a componente from the Backstage UI using this URL: 
+`https://github.com/samgabrail/backstage/blob/main/my-backstage-app/packages/backend/templates/go-api/template.yaml`
+
+-- This marks the end of the Platform Engineer's job
+
+#### Persona: Developer
+7. Launch the Go API template from Backstage
+8. Check the ArgoCD Overview Widget in Backstage
+9. Check the Kubernetes Tab in Backstage
+10. Now the d
+-- This marks the end of the Developer's job

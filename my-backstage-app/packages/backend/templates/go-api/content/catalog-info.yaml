@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: ${{ values.apiName | dump }}
   links:
-    - url: https://masterk8sbaremetal.tekanaid.com:<NODE_PORT>
+    - url: https://34.30.205.164:30000
       title: App
       icon: dashboard
   annotations:
