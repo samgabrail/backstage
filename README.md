@@ -234,7 +234,7 @@ argocd cluster add gke_crossplaneprojects_us-central1_samgke-jrlzj --name gke-de
 ```
 4. Check the ArgoCD UI to see the cluster registered and get the URL for the new cluster
 5. Update the Go API template with the URL of the new GKE cluster in GitHub
-6. Register this Go API template as a componente from the Backstage UI using this URL: 
+6. Register this Go API template as a component from the Backstage UI using this URL: 
 `https://github.com/samgabrail/backstage/blob/main/my-backstage-app/packages/backend/templates/go-api/template.yaml`
 
 -- This marks the end of the Platform Engineer's job
@@ -242,12 +242,11 @@ argocd cluster add gke_crossplaneprojects_us-central1_samgke-jrlzj --name gke-de
 #### Persona: Developer
 7. Launch the Go API template from Backstage
 8. Click on the new component to show that we're still waiting for it to be created
-9. Open the GitHub page and clone it locally
-10. Check the ArgoCD Overview Widget in Backstage to see all is green
-11. Click on the Name of the app in the widget for more info and see the destination K8s API server
-12. Click on the App in Links to see it running
-13. Check the Kubernetes Tab in Backstage
-14. Make a change in the cloned repo and push it to GitHub to watch ArgoCD sync and deploy the changes
+9. Check the ArgoCD Overview Widget in Backstage to see all is green
+10. Click on the Name of the app in the widget for more info and see the destination K8s API server
+11. Click on the App in Links to see it running
+12. Check the Kubernetes Tab in Backstage
+13. Make a change in the repo and push it to GitHub to watch ArgoCD sync and deploy the changes
 
 -- This marks the end of the Developer's job
 
