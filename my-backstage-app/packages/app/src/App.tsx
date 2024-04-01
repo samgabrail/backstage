@@ -1,4 +1,5 @@
 import React from 'react';
+import { kubernetesPlugin, KubernetesPage } from '@backstage/plugin-kubernetes';
 import { Navigate, Route } from 'react-router-dom';
 import { apiDocsPlugin, ApiExplorerPage } from '@backstage/plugin-api-docs';
 import {
@@ -93,6 +94,7 @@ const routes = (
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
+    <Route path="/kubernetes" element={<KubernetesPage />} />
   </FlatRoutes>
 );
 
