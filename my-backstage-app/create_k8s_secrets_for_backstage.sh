@@ -10,6 +10,7 @@ echo "apiVersion: v1" > $OUTPUT_FILE
 echo "kind: Secret" >> $OUTPUT_FILE
 echo "metadata:" >> $OUTPUT_FILE
 echo "  name: my-backstage-secrets" >> $OUTPUT_FILE
+echo "  namespace: backstage" >> $OUTPUT_FILE
 echo "type: Opaque" >> $OUTPUT_FILE
 echo "data:" >> $OUTPUT_FILE
 
