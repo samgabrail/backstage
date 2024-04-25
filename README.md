@@ -120,7 +120,7 @@ Creating the app...
 
 ```bash
 cd my-backstage-app
-./start.sh 1.0.3
+./start.sh 1.0.5
 ```
 
 ### Install in Kubernetes
